@@ -10,7 +10,7 @@ public class Player {
 	int Block;
 	int M;
 	int T = 1;
-	int Gold;
+	int gold;
 	int healthPot = 1;
 	boolean inShop = false;
 	int Kills;
@@ -28,6 +28,7 @@ public class Player {
 	int magicPt;
 	int magic;
 	boolean tome = false;
+	int icePot;
 Player(){
 	healthSlot = 6;	
     health = healthSlot;
@@ -95,7 +96,7 @@ Player(){
     		 mobHitPoint = sword;
 		
     	 }else if (T == 'M'){
-    		 mobHitPoint = magic;
+    		 mobHitPoint = magic * 3/2;
 		}
 		Mob.Damage(mobHitPoint,P,Mob,'N');
 	}
@@ -109,12 +110,10 @@ Player(){
    P.heal(healthSlot - health, 'H');
    
   if( Math.random()  > .5){
-	  Gold = Gold + 3 * Mob.getLevel();
-	  System.out.println("You have found "+ 2 * Mob.getLevel() +" Gold!! you now have " + Gold + " Gold");
+	  gold = gold + 3 * Mob.getLevel();
+	  System.out.println("You have found "+ 2 * Mob.getLevel() +" Gold!! you now have " + gold + " Gold");
 	  
   }
-    
-   	 
     
      }
  void Block(Player P){
@@ -124,8 +123,7 @@ Player(){
   int Get(char in){
     if(in == 'X'){
     	M = Kills;   
-    }
-    else if (in == 'M'){
+    }else if (in == 'M'){
     	M = 3 * T;
     	
     }else if (in == 'P'){
@@ -144,13 +142,13 @@ Player(){
 	return M; 	
     	
     }
-    void Shop(Player P){
+void Shop(Player P){
     	
     	inShop = true;
     	System.out.println("Hello welcome to the shop ");
         System.out.println("These shops are located in between every room ");
     	while(inShop){
-    	System.out.println("You have " + Gold + " gold Type number to buy or Leave");
+    	System.out.println("You have " + gold + " gold Type number to buy or Leave");
     	System.out.println("1.) Leave");
     	System.out.println("2.) Heath potions : " + P.Get('P')+"(restors health by half) price 5 gold");
     	System.out.print("3.) Fire Sword (A better sword) price 1,000 gold");
@@ -178,61 +176,62 @@ Player(){
     	S = Shop.nextInt();
     	if(S == 1){
     		inShop = false;
-    		}else if(S == 2 && Gold >= 5){
-    			Gold = Gold - 5;
+    		}else if(S == 2 && gold >= 5){
+    			gold = gold - 5;
     			healthPot = healthPot + 1;
     			System.out.println("You have perchased a health potion");
     			System.out.println("You now have " + healthPot + " health potion(s)");
     		}else if (S == 2){
     			System.out.println("You do not have the gold to buy this item");	
-    		}else if (S == 3 && Gold >= 1000 && !fireSword){
+    		}else if (S == 3 && gold >= 1000 && !fireSword){
     			 System.out.println("You have perchased the Fire Sword");
     			 fireSword = true;
-    			 Gold = Gold - 1000;
+    			 gold = gold - 1000;
     			 swordUp = swordUp + 1;
     			 sword = xp * swordUp - xp/2; 
     		}else if(S == 3){
     			System.out.println("You dont have the gold");
-    		}else if (S == 4 && Gold >= 1500 && !superSheald){
+    		}else if (S == 4 && gold >= 1500 && !superSheald){
     			System.out.println("You have perchased the Super Sheald");
     			superSheald = true;
-    			Gold = Gold - 1500;
+    			gold = gold - 1500;
     		}else if (S == 4){
     			System.out.println("You dont have the gold");
-    		}else if (S == 5 && Gold >= 50 && !tome){
+    		}else if (S == 5 && gold >= 50 && !tome){
     			System.out.println("You got the tome");
     			tome = true;
-    			Gold = Gold - 50;
+    			gold = gold - 50;
     		}else if (S == 5){
     			System.out.println("You dont have the gold or alredy hve this item");
-    		}else if (S == 6 && Gold >= 5){
+    		}else if (S == 6 && gold >= 5){
     			System.out.println("You have perchased a magic upgrade");
-    			Gold = Gold - 5;
+    			gold = gold - 5;
     			magicPt = magicPt + 1;
     		}else if (S == 6){
     			System.out.println("You dont have the gold");
-    		}else if (S == 7 && Gold >= 5){
+    		}else if (S == 7 && gold >= 5){
     			System.out.println("You have perchased a sword damage upgrade");
-    			Gold = Gold - 5;
+    			gold = gold - 5;
     			swordPt = swordPt + 1;
     		}else if (S == 7){
     			System.out.println("You dont have the gold");
-    		}else if (S == 8 && Gold >= 5){
+    		}else if (S == 8 && gold >= 5){
     			System.out.println("You have perchased a Shop Tp Potion");
     			shopTpPotoins = shopTpPotoins + 1;
     			System.out.println("You now have " + shopTpPotoins + " Potion(s)");
-    			Gold = Gold - 5;
+    			gold = gold - 5;
     		}else if (S == 8){
     			 System.out.println("You dont have the gold to buy this");
-    		}else if (S == 9 && Gold >= 20){
+    		}else if (S == 9 && gold >= 20){
     			System.out.println("You have perchased a Stun Potion");
     			stunPotion = stunPotion + 1;
     			System.out.println("You now have " + stunPotion + " Potion(s)");
-    			Gold = Gold - 20;
+    			gold = gold - 20;
     		}else if (S == 9){
     			System.out.println("You dont have the gold");
     		}
     	} 
+    	
     	T = T + 1;
     	sword = swordPt * swordUp + 5;
     	magic = magicPt * 2 + 5;
@@ -246,17 +245,18 @@ Player(){
     	health = healthSlot;
     	sword = xp; 
     	Block = xp + 2;
-    	Gold = 2000;
+    	gold = 2000;
     }else if(c == 2004){
-    	Gold = 99999;
+    	gold = 99999;
     	Block = xp + 2;
     }else if (c == 420){
     P.Shop(P);
     T = T - 1;
+    }else if (c == 110){
+    icePot = icePot + 3;	
     }
-    }
-  void returnShop(Player P){
-	System.out.println("You drink the potion and appear right out side of the shop");   
+  }
+  void returnShop(Player P){ 
 	shopTpPotoins = shopTpPotoins - 1;  
 	P.Shop(P);
 	T = T - 1;   
