@@ -14,7 +14,6 @@ public class Player {
 	int healthPot = 1;
 	boolean inShop = false;
 	int Kills;
-	Scanner Shop = new Scanner(System.in);
 	int S;
 	int R;
 	String name;
@@ -30,6 +29,7 @@ public class Player {
 	boolean tome = false;
 	int icePot;
 Player(){
+    Scanner Shop = new Scanner(System.in);
 	healthSlot = 6;	
     health = healthSlot;
     sword = xp * swordUp - xp/2 + 1;
@@ -143,7 +143,6 @@ Player(){
     	
     }
 void Shop(Player P){
-    	
     	inShop = true;
     	System.out.println("Hello welcome to the shop ");
         System.out.println("These shops are located in between every room ");
@@ -173,7 +172,9 @@ void Shop(Player P){
     	System.out.println("7.) Sword damage upgrade : " + swordPt +" price 5");
     	System.out.println("8.) Shop Tp Potions : " + shopTpPotoins + " price 5 gold");
     	System.out.println("9.) Stun Potions : " + stunPotion + " price 20 gold");
-    	S = Shop.nextInt();
+            Scanner Shop = new Scanner(System.in);
+            S = Shop.nextInt();
+            Shop.close();
     	if(S == 1){
     		inShop = false;
     		}else if(S == 2 && gold >= 5){
