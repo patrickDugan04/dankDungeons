@@ -70,7 +70,8 @@ public class Main {
         	  System.out.println("You shoot the mob whith a blast of magic");
         	  Patrick.attack(Mob,Patrick,'M');
 	      } else if (act == 5){
-	    	  act = 0; 
+	    	  act = 0;
+              input.close();
 	    	  System.exit(0);
 	      } else if (act == 200 || act == 2004 || act == 420 || act == 666 || act == 110) {
 	    	  Patrick.Dev(act,Patrick);
@@ -85,5 +86,5 @@ public class Main {
           }
         }
       }
-	}
+  }
 } 			
