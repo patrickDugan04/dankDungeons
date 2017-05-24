@@ -88,6 +88,7 @@ public class fireBossInterface {
 					turns = 0;
 				}
 			}
+        input.close();
 		Patrick.shopTpPotoins = Patrick.shopTpPotoins + 1;
 		Patrick.returnShop(Patrick);
 		
