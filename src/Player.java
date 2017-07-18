@@ -174,7 +174,6 @@ void Shop(Player P){
     	System.out.println("9.) Stun Potions : " + stunPotion + " price 20 gold");
             Scanner Shop = new Scanner(System.in);
             S = Shop.nextInt();
-            Shop.close();
     	if(S == 1){
     		inShop = false;
     		}else if(S == 2 && gold >= 5){
