@@ -10,8 +10,8 @@ I recommend you have java 1.8
  
 How to run
 
-all you need to do is go into terminal and use cd and ls(if you don'y know what they are done a quick lesson of the command line will only take like 5 min) to go where you downloaded the game
-
+all you need to do is go into terminal and use cd and ls(if you don'y know what they are do a quick lesson of the command line 
+will only take like 5 min) to go where you downloaded the game
 then go into the folder unlil you are in the src folder once in their type javac Main.java than java Main
 
  
